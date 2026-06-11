@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: etmdb-api
+    runtime: python
+    rootDir: api
+    buildCommand: pip install -e .
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: ETMDB_API_KEY_SALT
+        generateValue: true
+      - key: ETMDB_DATABASE_URL
+        value: sqlite+aiosqlite:///./etmdb.db
+      - key: ETMDB_DEBUG
+        value: false

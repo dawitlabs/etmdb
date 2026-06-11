@@ -6,8 +6,9 @@ dist/
 build/
 .venv/
 venv/
-*.db
 *.sqlite3
+# Keep the seeded DB in version control so Render has data without a seed step
+!api/etmdb.db
 
 # Environment
 .env
