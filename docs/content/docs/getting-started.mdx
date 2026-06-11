@@ -8,7 +8,7 @@ description: Make your first ETMDB API request in under a minute.
 No API key required. Just call the endpoint:
 
 ```bash
-curl https://api.etmdb.dev/api/v1/movies/popular
+curl https://api.etmdb.dawit.dev/api/v1/movies/popular
 ```
 
 ## Response Format
@@ -41,7 +41,7 @@ All list endpoints return paginated responses:
 ## JavaScript
 
 ```javascript
-const res = await fetch('https://api.etmdb.dev/api/v1/movies/popular');
+const res = await fetch('https://api.etmdb.dawit.dev/api/v1/movies/popular');
 const { results } = await res.json();
 results.forEach(m => console.log(`${m.title} (${m.release_year})`));
 ```
@@ -51,7 +51,7 @@ results.forEach(m => console.log(`${m.title} (${m.release_year})`));
 ```python
 import httpx
 
-client = httpx.Client(base_url='https://api.etmdb.dev/api/v1')
+client = httpx.Client(base_url='https://api.etmdb.dawit.dev/api/v1')
 
 # Popular movies
 movies = client.get('/movies/popular').json()

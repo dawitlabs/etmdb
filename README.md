@@ -2,6 +2,10 @@
 
 A public, open-source API for Ethiopian and Amharic-language films. Think TMDB, but focused entirely on Ethiopian cinema.
 
+- **Docs:** https://etmdb.dawit.dev
+- **API:** https://api.etmdb.dawit.dev
+- **Reference:** https://api.etmdb.dawit.dev/reference
+
 ## What's Inside
 
 ```
@@ -20,6 +24,30 @@ ETMDB aggregates film metadata from multiple open sources:
 
 ## Quick Start
 
+No API key required for read access. Use the demo key below for testing authenticated endpoints.
+
+```bash
+# Popular movies (no key needed)
+curl https://api.etmdb.dawit.dev/api/v1/movies/popular
+
+# Search
+curl "https://api.etmdb.dawit.dev/api/v1/search/multi?q=Difret"
+
+# With demo key
+curl -H "X-Api-Key: etmdb_ku9T6l0y2YiHvOgMB2EdT4Zqr4xFRB_W-jdbKvVyETo" \
+  https://api.etmdb.dawit.dev/api/v1/movies
+```
+
+Register your own free key:
+
+```bash
+curl -X POST https://api.etmdb.dawit.dev/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Your Name", "email": "you@example.com"}'
+```
+
+## Local Development
+
 ### API
 
 ```bash
@@ -27,12 +55,8 @@ cd api
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
-alembic upgrade head
-python -m scripts.seed
 uvicorn app.main:app --reload
 ```
-
-The API runs at `http://localhost:8000`. Swagger docs at `/docs`, OpenAPI spec at `/openapi.json`.
 
 ### Documentation Site
 
@@ -40,21 +64,6 @@ The API runs at `http://localhost:8000`. Swagger docs at `/docs`, OpenAPI spec a
 cd docs
 pnpm install
 pnpm dev
-```
-
-Docs site runs at `http://localhost:3000`.
-
-## API Usage
-
-```bash
-# Get all movies
-curl -H "X-Api-Key: YOUR_KEY" http://localhost:8000/api/v1/movies
-
-# Search for a film
-curl -H "X-Api-Key: YOUR_KEY" "http://localhost:8000/api/v1/search?q=ፔንዱለም"
-
-# Get movie details
-curl -H "X-Api-Key: YOUR_KEY" http://localhost:8000/api/v1/movies/pendulum
 ```
 
 ## Contributing

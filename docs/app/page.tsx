@@ -88,17 +88,17 @@ export default function HomePage() {
           <div className="opacity-40 mb-3 text-xs"># No authentication needed</div>
           <div>
             <span className="text-green-400">curl</span>{' '}
-            <span className="opacity-70 break-all">https://api.etmdb.dev/api/v1/movies/popular</span>
+            <span className="opacity-70 break-all">https://api.etmdb.dawit.dev/api/v1/movies/popular</span>
           </div>
           <div className="mt-4 opacity-40 text-xs"># Search across all content</div>
           <div>
             <span className="text-green-400">curl</span>{' '}
-            <span className="opacity-70 break-all">"https://api.etmdb.dev/api/v1/search/multi?q=Difret"</span>
+            <span className="opacity-70 break-all">"https://api.etmdb.dawit.dev/api/v1/search/multi?q=Difret"</span>
           </div>
           <div className="mt-4 opacity-40 text-xs"># Trending this week</div>
           <div>
             <span className="text-green-400">curl</span>{' '}
-            <span className="opacity-70 break-all">https://api.etmdb.dev/api/v1/trending/movie/week</span>
+            <span className="opacity-70 break-all">https://api.etmdb.dawit.dev/api/v1/trending/movie/week</span>
           </div>
         </div>
       </section>

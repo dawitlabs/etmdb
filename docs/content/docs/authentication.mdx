@@ -9,7 +9,7 @@ All `GET` endpoints are fully public. No API key, no signup, no rate limit for c
 
 ```bash
 # Works without any header
-curl https://api.etmdb.dev/api/v1/movies/popular
+curl https://api.etmdb.dawit.dev/api/v1/movies/popular
 ```
 
 ## Getting an API Key
@@ -17,7 +17,7 @@ curl https://api.etmdb.dev/api/v1/movies/popular
 If you're building an app and want to track usage or unlock higher rate limits, register for a free key:
 
 ```bash
-curl -X POST https://api.etmdb.dev/api/v1/auth/register \
+curl -X POST https://api.etmdb.dawit.dev/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"name": "Your Name", "email": "you@example.com"}'
 ```
@@ -41,7 +41,7 @@ Save the key immediately — it is returned only once.
 Pass it via the `X-Api-Key` header:
 
 ```bash
-curl -H "X-Api-Key: etmdb_xxxx" https://api.etmdb.dev/api/v1/movies
+curl -H "X-Api-Key: etmdb_xxxx" https://api.etmdb.dawit.dev/api/v1/movies
 ```
 
 ## Rate Limits
@@ -56,5 +56,10 @@ curl -H "X-Api-Key: etmdb_xxxx" https://api.etmdb.dev/api/v1/movies
 For development and testing:
 
 ```
-demo-key-etmdb-2026
+etmdb_ku9T6l0y2YiHvOgMB2EdT4Zqr4xFRB_W-jdbKvVyETo
+```
+
+```bash
+curl -H "X-Api-Key: etmdb_ku9T6l0y2YiHvOgMB2EdT4Zqr4xFRB_W-jdbKvVyETo" \
+  https://api.etmdb.dawit.dev/api/v1/movies/popular
 ```

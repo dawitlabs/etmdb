@@ -15,7 +15,7 @@ Search movies, series, and people in a single request. Returns the top results f
 | `limit` | int | Max results per category (default 5, max 20) |
 
 ```bash
-curl "https://api.etmdb.dev/api/v1/search/multi?q=Difret"
+curl "https://api.etmdb.dawit.dev/api/v1/search/multi?q=Difret"
 ```
 
 **Response:**
@@ -42,7 +42,7 @@ curl "https://api.etmdb.dev/api/v1/search/multi?q=Difret"
 | `language` | string | ISO 639-1 code |
 
 ```bash
-curl "https://api.etmdb.dev/api/v1/search/movies?q=love&year=2020"
+curl "https://api.etmdb.dawit.dev/api/v1/search/movies?q=love&year=2020"
 ```
 
 ## Search Series
@@ -56,7 +56,7 @@ Same parameters as `/search/movies`.
 `GET /search/people`
 
 ```bash
-curl "https://api.etmdb.dev/api/v1/search/people?q=Haile"
+curl "https://api.etmdb.dawit.dev/api/v1/search/people?q=Haile"
 ```
 
 ## General Search
@@ -66,5 +66,5 @@ curl "https://api.etmdb.dev/api/v1/search/people?q=Haile"
 Search both movies and series together. Use `type=movie` or `type=series` to narrow.
 
 ```bash
-curl "https://api.etmdb.dev/api/v1/search?q=drama&type=movie"
+curl "https://api.etmdb.dawit.dev/api/v1/search?q=drama&type=movie"
 ```
