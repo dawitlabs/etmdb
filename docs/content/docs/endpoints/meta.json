@@ -1,0 +1,4 @@
+{
+  "title": "Endpoints",
+  "pages": ["index", "movies", "series", "search", "discover", "trending", "people", "genres", "youtube"]
+}

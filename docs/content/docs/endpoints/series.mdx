@@ -1,0 +1,50 @@
+---
+title: Series
+description: Browse Ethiopian TV series and shows.
+---
+
+Series endpoints mirror the [Movies](/docs/endpoints/movies) API exactly, with additional fields for season and episode counts.
+
+## List Series
+
+`GET /series`
+
+Same parameters as `/movies`.
+
+```bash
+curl https://api.etmdb.dev/api/v1/series
+```
+
+## Popular / Top Rated / Recent
+
+```bash
+curl https://api.etmdb.dev/api/v1/series/popular
+curl https://api.etmdb.dev/api/v1/series/top-rated
+curl https://api.etmdb.dev/api/v1/series/recent
+```
+
+## Series Detail
+
+`GET /series/{slug}`
+
+Includes `number_of_seasons` and `number_of_episodes` fields.
+
+```json
+{
+  "id": 499,
+  "type": "series",
+  "title": "Tireta",
+  "slug": "tireta",
+  "number_of_seasons": 1,
+  "number_of_episodes": 13,
+  "release_year": 2020,
+  "countries": ["ET"]
+}
+```
+
+## Similar / Videos
+
+```bash
+curl https://api.etmdb.dev/api/v1/series/{slug}/similar
+curl https://api.etmdb.dev/api/v1/series/{slug}/videos
+```

@@ -1,0 +1,4 @@
+{
+  "title": "ETMDB Docs",
+  "pages": ["index", "getting-started", "authentication", "rate-limiting", "endpoints"]
+}

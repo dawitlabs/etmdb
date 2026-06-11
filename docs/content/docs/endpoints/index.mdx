@@ -1,0 +1,45 @@
+---
+title: Endpoints Overview
+description: All available API endpoints at a glance.
+---
+
+## Base URL
+
+```
+https://api.etmdb.dev/api/v1
+```
+
+## All Endpoints
+
+| Method | Path | Description |
+|---|---|---|
+| GET | `/movies` | List movies with pagination |
+| GET | `/movies/popular` | Sorted by YouTube views |
+| GET | `/movies/top-rated` | Sorted by TMDB rating |
+| GET | `/movies/recent` | Sorted by release year |
+| GET | `/movies/{slug}` | Full movie detail |
+| GET | `/movies/{slug}/similar` | Similar movies by genre |
+| GET | `/movies/{slug}/videos` | YouTube links for a movie |
+| GET | `/series` | List series |
+| GET | `/series/popular` | Popular series |
+| GET | `/series/top-rated` | Top-rated series |
+| GET | `/series/recent` | Recent series |
+| GET | `/series/{slug}` | Full series detail |
+| GET | `/series/{slug}/similar` | Similar series |
+| GET | `/series/{slug}/videos` | YouTube links for a series |
+| GET | `/search` | Search movies + series |
+| GET | `/search/multi` | Search movies + series + people |
+| GET | `/search/movies` | Search movies only |
+| GET | `/search/series` | Search series only |
+| GET | `/search/people` | Search people |
+| GET | `/discover` | Advanced filter + sort |
+| GET | `/trending/{type}/{window}` | Trending by view count |
+| GET | `/genres` | List genres |
+| GET | `/genres/{slug}/movies` | Movies in a genre |
+| GET | `/genres/{slug}/series` | Series in a genre |
+| GET | `/people` | List people |
+| GET | `/people/{slug}` | Person detail + filmography |
+| GET | `/youtube` | List YouTube links |
+| GET | `/youtube/{video_id}` | YouTube link detail |
+| GET | `/stats` | Database statistics |
+| POST | `/auth/register` | Register for an API key |

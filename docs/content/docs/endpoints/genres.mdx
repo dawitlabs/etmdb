@@ -1,0 +1,42 @@
+---
+title: Genres
+description: Browse content by genre.
+---
+
+## Available Genres
+
+| Slug | English | አማርኛ |
+|---|---|---|
+| `drama` | Drama | ድራማ |
+| `comedy` | Comedy | ኮሜዲ |
+| `romance` | Romance | ፍቅር |
+| `action` | Action | አክሽን |
+| `thriller` | Thriller | — |
+| `horror` | Horror | — |
+| `documentary` | Documentary | ዶክመንተሪ |
+| `historical` | Historical | ታሪካዊ |
+| `social` | Social | ማህበራዊ |
+
+## List Genres
+
+`GET /genres`
+
+```bash
+curl https://api.etmdb.dev/api/v1/genres
+```
+
+## Movies by Genre
+
+`GET /genres/{slug}/movies`
+
+```bash
+curl https://api.etmdb.dev/api/v1/genres/drama/movies
+```
+
+## Series by Genre
+
+`GET /genres/{slug}/series`
+
+```bash
+curl https://api.etmdb.dev/api/v1/genres/drama/series
+```

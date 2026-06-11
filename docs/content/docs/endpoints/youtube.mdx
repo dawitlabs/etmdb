@@ -1,0 +1,57 @@
+---
+title: YouTube
+description: YouTube video links with metadata and view counts.
+---
+
+## List YouTube Links
+
+`GET /youtube`
+
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | int | Page number |
+| `per_page` | int | Results per page (max 100) |
+| `movie_id` | int | Filter by linked title ID |
+| `linked_only` | bool | Only return links matched to a title |
+
+```bash
+# All YouTube links
+curl https://api.etmdb.dev/api/v1/youtube
+
+# Only matched links
+curl "https://api.etmdb.dev/api/v1/youtube?linked_only=true"
+```
+
+## YouTube Link Detail
+
+`GET /youtube/{video_id}`
+
+```bash
+curl https://api.etmdb.dev/api/v1/youtube/dQw4w9WgXcQ
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "video_id": "abc123",
+  "title": "Difret - Full Ethiopian Movie",
+  "channel_title": "Ethiopian Movies",
+  "published_at": "2021-01-15T00:00:00Z",
+  "duration_seconds": 5940,
+  "view_count": 1250000,
+  "thumbnail_url": "https://i.ytimg.com/vi/abc123/maxresdefault.jpg",
+  "embeddable": true,
+  "movie_id": 42,
+  "is_primary": true
+}
+```
+
+## Videos Per Title
+
+Use the movies or series endpoints for title-specific videos:
+
+```bash
+curl https://api.etmdb.dev/api/v1/movies/difret/videos
+curl https://api.etmdb.dev/api/v1/series/tireta/videos
+```

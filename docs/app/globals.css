@@ -1,0 +1,9 @@
+@import 'fumadocs-ui/style.css';
+@import 'tailwindcss';
+
+@source '../node_modules/fumadocs-ui/dist/**/*.js';
+
+@theme {
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}

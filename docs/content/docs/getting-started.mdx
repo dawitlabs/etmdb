@@ -1,0 +1,89 @@
+---
+title: Getting Started
+description: Make your first ETMDB API request in under a minute.
+---
+
+## Quick Start
+
+No API key required. Just call the endpoint:
+
+```bash
+curl https://api.etmdb.dev/api/v1/movies/popular
+```
+
+## Response Format
+
+All list endpoints return paginated responses:
+
+```json
+{
+  "page": 1,
+  "per_page": 20,
+  "total": 468,
+  "total_pages": 24,
+  "results": [
+    {
+      "id": 1,
+      "type": "movie",
+      "title": "Difret",
+      "slug": "difret",
+      "overview": "...",
+      "poster_url": "https://image.tmdb.org/t/p/w500/...",
+      "release_year": 2014,
+      "tmdb_rating": 7.2,
+      "spoken_languages": ["am"],
+      "countries": ["ET"]
+    }
+  ]
+}
+```
+
+## JavaScript
+
+```javascript
+const res = await fetch('https://api.etmdb.dev/api/v1/movies/popular');
+const { results } = await res.json();
+results.forEach(m => console.log(`${m.title} (${m.release_year})`));
+```
+
+## Python
+
+```python
+import httpx
+
+client = httpx.Client(base_url='https://api.etmdb.dev/api/v1')
+
+# Popular movies
+movies = client.get('/movies/popular').json()
+
+# Search
+results = client.get('/search/multi', params={'q': 'Difret'}).json()
+
+# Trending this week
+trending = client.get('/trending/movie/week').json()
+```
+
+## TypeScript Types
+
+```typescript
+interface Movie {
+  id: number;
+  type: 'movie' | 'series';
+  title: string;
+  original_title: string | null;
+  slug: string;
+  overview: string | null;
+  poster_url: string | null;
+  backdrop_url: string | null;
+  release_year: number | null;
+  release_date: string | null;
+  runtime: number | null;
+  number_of_seasons: number | null;
+  number_of_episodes: number | null;
+  spoken_languages: string[];
+  countries: string[];
+  tmdb_rating: number | null;
+  tmdb_votes: number | null;
+  source: string | null;
+}
+```

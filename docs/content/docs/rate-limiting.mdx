@@ -1,0 +1,29 @@
+---
+title: Rate Limiting
+description: Fair-use limits to keep the API fast for everyone.
+---
+
+## Limits
+
+| Tier | Limit |
+|---|---|
+| Anonymous | Shared pool (no per-key tracking) |
+| API Key | 10,000 requests / day |
+
+Limits reset at **midnight UTC**.
+
+## 429 Response
+
+When you exceed the limit:
+
+```json
+{
+  "detail": "Rate limit exceeded. Try again tomorrow."
+}
+```
+
+## Tips
+
+- Cache responses on your end — movie metadata rarely changes
+- Use `/movies/popular` or `/trending` for homepage feeds instead of paginating all movies
+- The `/stats` endpoint is always free and uncounted

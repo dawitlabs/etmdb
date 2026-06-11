@@ -1,0 +1,38 @@
+---
+title: Trending
+description: Trending titles ranked by YouTube view counts.
+---
+
+`GET /trending/{media_type}/{time_window}`
+
+Returns the most-watched titles for a given time window, ranked by YouTube view counts for videos uploaded in that window.
+
+## Parameters
+
+| Segment | Options |
+|---|---|
+| `media_type` | `movie`, `series`, `all` |
+| `time_window` | `day`, `week`, `month`, `all` |
+
+Also accepts `page` and `per_page` query params.
+
+## Examples
+
+```bash
+# Trending movies this week
+curl https://api.etmdb.dev/api/v1/trending/movie/week
+
+# All trending content today
+curl https://api.etmdb.dev/api/v1/trending/all/day
+
+# Most-watched series all time
+curl https://api.etmdb.dev/api/v1/trending/series/all
+```
+
+## How It Works
+
+Trending is calculated from YouTube video data:
+- Finds YouTube videos published within the time window
+- Sums view counts per linked movie/series
+- Returns titles sorted by those recent views
+- Falls back to all-time views if fewer than `per_page` results exist for the window

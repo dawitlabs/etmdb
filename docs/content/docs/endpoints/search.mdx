@@ -1,0 +1,70 @@
+---
+title: Search
+description: Full-text search across movies, series, and people.
+---
+
+## Multi Search
+
+`GET /search/multi`
+
+Search movies, series, and people in a single request. Returns the top results from each category.
+
+| Parameter | Type | Description |
+|---|---|---|
+| `q` | string | Search query (required) |
+| `limit` | int | Max results per category (default 5, max 20) |
+
+```bash
+curl "https://api.etmdb.dev/api/v1/search/multi?q=Difret"
+```
+
+**Response:**
+```json
+{
+  "query": "Difret",
+  "movies": [...],
+  "series": [...],
+  "people": [...],
+  "total_results": 3
+}
+```
+
+## Search Movies
+
+`GET /search/movies`
+
+| Parameter | Type | Description |
+|---|---|---|
+| `q` | string | Search query (required) |
+| `page` | int | Page number |
+| `per_page` | int | Results per page |
+| `year` | int | Filter by year |
+| `language` | string | ISO 639-1 code |
+
+```bash
+curl "https://api.etmdb.dev/api/v1/search/movies?q=love&year=2020"
+```
+
+## Search Series
+
+`GET /search/series`
+
+Same parameters as `/search/movies`.
+
+## Search People
+
+`GET /search/people`
+
+```bash
+curl "https://api.etmdb.dev/api/v1/search/people?q=Haile"
+```
+
+## General Search
+
+`GET /search`
+
+Search both movies and series together. Use `type=movie` or `type=series` to narrow.
+
+```bash
+curl "https://api.etmdb.dev/api/v1/search?q=drama&type=movie"
+```

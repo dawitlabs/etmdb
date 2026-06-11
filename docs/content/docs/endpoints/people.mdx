@@ -1,0 +1,53 @@
+---
+title: People
+description: Directors, actors, and other filmmakers.
+---
+
+## List People
+
+`GET /people`
+
+| Parameter | Type | Default |
+|---|---|---|
+| `page` | int | 1 |
+| `per_page` | int | 20 |
+
+```bash
+curl https://api.etmdb.dev/api/v1/people
+```
+
+## Person Detail
+
+`GET /people/{slug}`
+
+Returns full person info including filmography.
+
+```bash
+curl https://api.etmdb.dev/api/v1/people/haile-gerima
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "name": "Haile Gerima",
+  "slug": "haile-gerima",
+  "bio": null,
+  "tmdb_id": null,
+  "filmography": [
+    {
+      "movie_id": 5,
+      "movie_title": "Harvest: 3000 Years",
+      "movie_slug": "harvest-3000-years",
+      "role": "director",
+      "release_year": 1976
+    }
+  ]
+}
+```
+
+## Search People
+
+```bash
+curl "https://api.etmdb.dev/api/v1/search/people?q=Gerima"
+```

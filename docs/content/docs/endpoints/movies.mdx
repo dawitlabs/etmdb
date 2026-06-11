@@ -1,0 +1,104 @@
+---
+title: Movies
+description: Browse, filter, and fetch Ethiopian movie metadata.
+---
+
+## List Movies
+
+`GET /movies`
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `page` | int | 1 | Page number |
+| `per_page` | int | 20 | Results per page (max 100) |
+| `sort_by` | string | `title` | `title`, `release_year`, `tmdb_rating` |
+| `year` | int | — | Filter by exact release year |
+| `language` | string | — | ISO 639-1 code (e.g. `am`, `ti`) |
+| `country` | string | — | ISO 3166-1 code (e.g. `ET`) |
+
+```bash
+curl "https://api.etmdb.dev/api/v1/movies?sort_by=release_year&per_page=10"
+```
+
+## Popular Movies
+
+`GET /movies/popular`
+
+Returns movies ranked by total YouTube view counts.
+
+```bash
+curl https://api.etmdb.dev/api/v1/movies/popular
+```
+
+## Top Rated
+
+`GET /movies/top-rated`
+
+Returns movies with the highest TMDB ratings.
+
+```bash
+curl https://api.etmdb.dev/api/v1/movies/top-rated
+```
+
+## Recent
+
+`GET /movies/recent`
+
+Returns movies sorted by release year (newest first).
+
+```bash
+curl https://api.etmdb.dev/api/v1/movies/recent
+```
+
+## Movie Detail
+
+`GET /movies/{slug}`
+
+Returns the full movie object including genres, credits, and YouTube links.
+
+```bash
+curl https://api.etmdb.dev/api/v1/movies/difret
+```
+
+**Response:**
+```json
+{
+  "id": 42,
+  "type": "movie",
+  "title": "Difret",
+  "slug": "difret",
+  "overview": "...",
+  "tagline": "...",
+  "status": "Released",
+  "poster_url": "https://image.tmdb.org/t/p/w500/...",
+  "backdrop_url": "https://image.tmdb.org/t/p/original/...",
+  "release_year": 2014,
+  "release_date": "2014-09-16",
+  "runtime": 99,
+  "spoken_languages": ["am"],
+  "countries": ["ET"],
+  "tmdb_rating": 7.2,
+  "tmdb_votes": 148,
+  "tmdb_id": 287635,
+  "imdb_id": "tt3205510",
+  "genres": [{ "id": 1, "name": "Drama", "name_am": "ድራማ", "slug": "drama" }],
+  "credits": [{ "person_name": "Zeresenay Mehari", "role": "director" }],
+  "youtube_links": [{ "video_id": "...", "title": "...", "is_primary": true }]
+}
+```
+
+## Similar Movies
+
+`GET /movies/{slug}/similar`
+
+Returns movies sharing the same genres, sorted by rating.
+
+| Parameter | Type | Default |
+|---|---|---|
+| `limit` | int | 12 (max 30) |
+
+## Videos
+
+`GET /movies/{slug}/videos`
+
+Returns all YouTube links for a movie, primary first.
