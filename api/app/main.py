@@ -6,7 +6,7 @@ from scalar_fastapi import get_scalar_api_reference
 
 from app.config import settings
 from app.database import create_tables
-from app.routers import genres, movies, people, search, stats, youtube
+from app.routers import auth, discover, genres, movies, people, search, series, stats, trending, youtube
 
 
 @asynccontextmanager
@@ -19,10 +19,11 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="ETMDB — Ethiopian Movie Database",
         description=(
-            "Public REST API for Ethiopian and Amharic-language films. "
-            "Browse metadata from TMDB, Wikidata, Wikipedia, and YouTube."
+            "Public REST API for Ethiopian and Amharic-language films and series. "
+            "Discover, search, and explore metadata from TMDB, Wikidata, Wikipedia, and YouTube.\n\n"
+            "**Free to use.** Register at `POST /api/v1/auth/register` to get an API key."
         ),
-        version="0.1.0",
+        version="1.0.0",
         docs_url="/docs",
         redoc_url="/redoc",
         openapi_url="/openapi.json",
@@ -31,18 +32,33 @@ def create_app() -> FastAPI:
 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.cors_origins,
-        allow_credentials=True,
-        allow_methods=["GET"],
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["GET", "POST"],
         allow_headers=["*"],
     )
 
-    app.include_router(movies.router, prefix="/api/v1")
-    app.include_router(people.router, prefix="/api/v1")
-    app.include_router(genres.router, prefix="/api/v1")
-    app.include_router(search.router, prefix="/api/v1")
-    app.include_router(youtube.router, prefix="/api/v1")
-    app.include_router(stats.router, prefix="/api/v1")
+    prefix = "/api/v1"
+    app.include_router(movies.router, prefix=prefix)
+    app.include_router(series.router, prefix=prefix)
+    app.include_router(search.router, prefix=prefix)
+    app.include_router(discover.router, prefix=prefix)
+    app.include_router(trending.router, prefix=prefix)
+    app.include_router(genres.router, prefix=prefix)
+    app.include_router(people.router, prefix=prefix)
+    app.include_router(youtube.router, prefix=prefix)
+    app.include_router(stats.router, prefix=prefix)
+    app.include_router(auth.router, prefix=prefix)
+
+    @app.get("/", include_in_schema=False)
+    async def root():
+        return {
+            "name": "ETMDB API",
+            "version": "1.0.0",
+            "description": "Ethiopian Movie Database — open API for Ethiopian cinema",
+            "docs": "/reference",
+            "openapi": "/openapi.json",
+        }
 
     @app.get("/reference", include_in_schema=False)
     async def scalar_docs():

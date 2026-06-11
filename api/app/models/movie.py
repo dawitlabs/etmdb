@@ -28,6 +28,10 @@ class MovieBase(SQLModel):
     tmdb_rating: float | None = None
     tmdb_votes: int | None = None
     type: str = Field(default="movie", index=True)  # "movie" | "series"
+    tagline: str | None = None
+    status: str | None = None
+    number_of_seasons: int | None = None
+    number_of_episodes: int | None = None
 
 
 class Movie(MovieBase, table=True):
